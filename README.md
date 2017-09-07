@@ -123,6 +123,8 @@ IEnumerator GatherNPCs(Vector gatheringPoint)
 }
 ```
 
+Here is a more complicated example where I show how you can use coroutines in conjunction with asynchronous functions (in this case, to download a batch of files and wait until they've finished):
+
 ```csharp
 IEnumerator DownloadFile(string url, string toFile)
 {
@@ -141,6 +143,8 @@ IEnumerator DownloadOneAtATime()
     yield return DownloadFile("http://site.com/file1.png", "file1.png");
     yield return DownloadFile("http://site.com/file2.png", "file2.png");
     yield return DownloadFile("http://site.com/file3.png", "file3.png");
+    yield return DownloadFile("http://site.com/file4.png", "file4.png");
+    yield return DownloadFile("http://site.com/file5.png", "file5.png");
 }
 
 //Download the files all at once asynchronously
@@ -151,6 +155,8 @@ IEnumerator DownloadAllAtOnce()
     downloads.Add(runner.Run(DownloadFile("http://site.com/file1.png", "file1.png")));
     downloads.Add(runner.Run(DownloadFile("http://site.com/file2.png", "file2.png")));
     downloads.Add(runner.Run(DownloadFile("http://site.com/file3.png", "file3.png")));
+    downloads.Add(runner.Run(DownloadFile("http://site.com/file4.png", "file4.png")));
+    downloads.Add(runner.Run(DownloadFile("http://site.com/file5.png", "file5.png")));
 
     //Wait until all downloads are done
     while (downloads.Count > 0)
@@ -162,3 +168,11 @@ IEnumerator DownloadAllAtOnce()
     }
 }
 ```
+
+## Why coroutines?
+
+I use coroutines a lot in my games, as I find them great for organizing actor behavior and animations. As opposed to an async callback-based system, coroutines allow you to write your behaviors line-by-line, like how you would naturally write code, and result in very clean and easy to understand sequences.
+
+There are good and bad times to use them, and you will get better at distinguishing this as you use them more. For many of my games, coroutines have been completely priceless, and have helped me organize and maintain very large and complicated systems that behave exactly in the order I wish them to.
+
+**NOTE:** Not all languages have built-in support for coroutine systems like this. If you plan on porting your code to other languages, it may not be worth the pain of porting if your target language does not have a reliable means of implementing coroutines.
