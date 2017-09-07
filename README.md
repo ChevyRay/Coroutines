@@ -73,7 +73,11 @@ You can also stop any running routines:
 //Stop all running routines
 runner.StopAll();
 
-var
+//Start a routine and store a handle to it
+CoroutineHandle myRoutine = runner.Run(SomeRoutine());
+
+//Stop a specific routine
+myRoutine.Stop();
 ```
 
 ## Other tips and tricks
