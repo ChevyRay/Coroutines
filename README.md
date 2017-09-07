@@ -1,5 +1,5 @@
 # Coroutines
-A simple system for running nested coroutines in C#.
+A simple system for running nested coroutines in C#. Just drop `Coroutines.cs` into your project and you're ready to go.
 
 ## What is a coroutine?
 C# has a feature called "enumerators" which are functions that can be *suspended* during their execution. They do this by using `yield return`, rather than regular `return`. When you use `yield`, you effectively *pause* the function, and at any time you can *resume* it and it will continue after the most recent `yield`.
