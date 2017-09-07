@@ -81,7 +81,7 @@ myRoutine.Stop();
 ```
 
 ## Other tips and tricks
-A coroutine can run infinitely as well by using a loop. You can also tell the routine to "wait for the next frame" by yielding `null`:
+A coroutine can run infinitely as well by using a loop. You can also tell the routine to "wait for the next update" by yielding `null`:
 
 ```csharp
 IEnumerator RunThisForever()
