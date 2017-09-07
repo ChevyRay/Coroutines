@@ -67,6 +67,15 @@ void StartGame()
 }
 ```
 
+You can also stop any running routines:
+
+```csharp
+//Stop all running routines
+runner.StopAll();
+
+var
+```
+
 ## Other tips and tricks
 A coroutine can run infinitely as well by using a loop. You can also tell the routine to "wait for the next frame" by yielding `null`:
 
@@ -88,9 +97,9 @@ IEnumerator EnemyBehavior()
     while (enemyIsAlive)
     {
         yield return PatrolForPlayer();
-        yield return PlayAlertAnimation();
+        yield return Speak("I found you!");
         yield return ChaseAfterPlayer();
-        yield return PlayConfusedAnimation();
+        yield return Speak("Wait... where did you go!?");
         yield return ReturnToPatrol();
     }
 }
